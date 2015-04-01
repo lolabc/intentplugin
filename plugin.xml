@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.cordovaprogramming.intentPlugin" version="1.0.0">
+  <name>intentPlugin</name>
+  <author>WCShuang</author>
+  <description>Exposes mobile intent related values to a Cordova application.</description>
+  <keywords>intentPlugin</keywords>
+  <license>Apache 2.0 License</license>
+  <engines>
+    <engine name="cordova" version="3.6.4" />
+  </engines>
+  <js-module src="appintent.js" name="appintent">
+    <clobbers target="appintent" />
+  </js-module>
+  <platform name="android">
+    <!-- android-specific elements -->
+    <source-file src="src/android/intentPlugin.java" target-dir="src/com/cordovaprogramming/appintent" />
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="intentPlugin" >
+        <param name="android-package" value="com.cordovaprogramming.appintent.intentPlugin"/>
+      </feature>
+    </config-file>
+    
+  </platform>
+  <platform name="ios">
+    <!-- ios-specific elements -->
+  </platform>
+</plugin>
