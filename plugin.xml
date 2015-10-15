@@ -6,7 +6,7 @@
   <keywords>intentPlugin</keywords>
   <license>Apache 2.0 License</license>
   <engines>
-    <engine name="cordova" version="3.6.4" />
+    <engine name="cordova" version=">=3.6.4-dev" />
   </engines>
   <js-module src="appintent.js" name="appintent">
     <clobbers target="appintent" />
@@ -20,6 +20,10 @@
       </feature>
     </config-file>
     
+   <source-file src="src/android/gzga_app2_sdk_v1.5" target-dir="lib" />
+   <source-file src="src/android/HitownActivity.java" target-dir="src/com/cordovaprogramming/appintent" />
+   <source-file src="src/android/HitownApplication.java" target-dir="src/com/cordovaprogramming/appintent" />
+   <source-file src="src/android/HitownTabActivity.java" target-dir="src/com/cordovaprogramming/appintent" />
   </platform>
   <platform name="ios">
     <!-- ios-specific elements -->

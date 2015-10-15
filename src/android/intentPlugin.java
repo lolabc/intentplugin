@@ -6,16 +6,30 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface; 
 import org.apache.cordova.CordovaWebView; 
 
+import com.hitown.sdk.data.CoreData;
+import com.hitown.sdk.data.DataChangeInterface;
+import com.hitown.sdk.data.UserData;
+import com.hitown.sdk2.manager.HitownActivity;
+
 import org.json.JSONArray; 
 import org.json.JSONException; 
+
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 
 
-class MyIntent extends Activity{
+
+ class MyIntent extends HitownActivity{
 	
-	  Intent intent = getIntent();
-	 public final  String usName = intent.getStringExtra("username");
+	  //Intent intent = getIntent();
+	
+	 CoreData ct=null;
+	public  String getName (){
+		ct = new CoreData(this);
+		return ct.getName();
+	} 
+	// public final  String usName = intent.getStringExtra("username");
 	 //public final  String usName = "username";
 }
 
@@ -38,13 +52,16 @@ public class intentPlugin extends CordovaPlugin {
 			CallbackContext callbackContext) throws org.json.JSONException {
 		
 		MyIntent myintent= new MyIntent();
+		
 		try { 
 			if (action.equals("getIntent")) {
 
-				if (myintent.usName != null && !myintent.usName.equals("")) {
-					  callbackContext.success(myintent.usName);
-					  return true;
-				}
+				callbackContext.success(myintent.getName());
+				return true;
+			//	if (myintent.usName != null && !myintent.usName.equals("")) {
+				//	  callbackContext.success(myintent.usName);
+				//	  return true;
+			//	}
 			
 	      }
 			 callbackContext.error("Invalid Action");   
